@@ -589,4 +589,16 @@ button:hover:after {
   #content2, #photo, #auction {
     margin-top: 0px;
   }
+  .about-content{
+    margin: 0px;
+  }
+  #Home .content{
+    display: grid;
+  }
+  .contact-images {
+    position: initial;
+  }
+  .about-txt{
+    padding-bottom: 40px;
+  }
 }

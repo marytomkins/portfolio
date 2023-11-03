@@ -85,6 +85,8 @@ const StyledMenu = styled.div`
   padding: 0px;
   position: fixed;
   height: 100vh;
+  min-height: 100vh;
+  min-width: 100%;
   max-width: 432px;
   top: 0;
   right: 0;

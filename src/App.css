@@ -28,6 +28,10 @@ background: #F5FFF2
   );
 }
 
+html, body { 
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--background);
   font-family: "Playfair Display", serif !important;

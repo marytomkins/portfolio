@@ -38,7 +38,6 @@ const mobileHeader = {
   height: "100px",
   display: "flex",
   flexDirection: "row",
-  width: "100%",
   margin: "1.5rem 0",
   justifyContent: "space-between",
 };

@@ -131,18 +131,20 @@ const MobileNavBar = () => {
         </StyledBurger>
       </div>
       {barsOpen && (
-        <StyledMenu onClick={() => handleToggle()}>
-          <Image
-            logo={name}
-            customStyle={{
-              logo: { height: "auto", maxWidth: "90%" },
-              link: { height: "auto", margin: "0" },
-            }}
-          />
-          {Object.keys(tabs).map((tab) => (
-            <Tab tab={tabs[tab]} mobile={true} />
-          ))}
-        </StyledMenu>
+        <div style={{ maxWidth: "432px", width: "100%", position: "absolute" }}>
+          <StyledMenu onClick={() => handleToggle()}>
+            <Image
+              logo={name}
+              customStyle={{
+                logo: { height: "auto", maxWidth: "90%" },
+                link: { height: "auto", margin: "0" },
+              }}
+            />
+            {Object.keys(tabs).map((tab) => (
+              <Tab tab={tabs[tab]} mobile={true} />
+            ))}
+          </StyledMenu>
+        </div>
       )}
     </div>
   );

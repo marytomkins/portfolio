@@ -1,359 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Yeseva+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Plus+Jakarta+Sans:wght@200;300;400&display=swap");
 
-/* font-family: 'Cabin', sans-serif;
-font-family: 'Yeseva One', cursive; 
-dark blue #263D59;
-medium blue #526786
-light blue #8095B6
-gray #f0f0f0 
-btn gray #e0e0e0*/
+/* font-family: 'Playfair Display', serif;
+font-family: 'Plus Jakarta Sans', sans-serif; 
+darkgreen: #00584b
+darkblue: #356B89
+neongreen: #D8E267
+purple: #F6D8F7
+lightblue: #ceeeff
+lightgreen: #d6fccfå
+orange: #fc9d59
+background: #F5FFF2
+*/
 
-.App {
-    background: #F5FFF3;
-    padding: 1.5rem;
+:root {
+  --darkgreen: #00584b;
+  --darkblue: #356b89;
+  --neongreen: #d8e267;
+  --purple: #f6d8f7;
+  --lightblue: #ceeeff;
+  --lightgreen: #d6fccf;
+  --orange: #fc9d59;
+  --background: #f5fff2;
+  --header-outer-height: 150px;
+  --header-inner-height: 60px;
+  --header-height-difference: calc(
+    var(--header-outer-height) - var(--header-inner-height)
+  );
 }
 
-.square {
-    height: calc(100vh - 3rem);
-    width: calc(100vw - 3rem);
-    border-radius: 30px;
-    font-family: 'Cabin', sans-serif;
-    position: relative;
-    margin-bottom: 2rem;
+body {
+  background-color: var(--background);
+  font-family: "Playfair Display", serif !important;
 }
 
-.about-container {
-    text-align: center;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.no-padding-top {
+  padding-top: 0rem !important;
+  position: sticky !important;
 }
 
-.logo-pic {
-    width: 105%;
+.no-margin {
+  margin: 0rem !important;
 }
 
-.center-logo {
-    display: block;
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 50%;
-    margin: auto;
-    margin-bottom: 1rem;
+.add-shadow {
+  box-shadow: var(--darkgreen) 0px 0px 10px 0px;
+  padding: 0 !important;
+  height: var(--header-inner-height) !important;
 }
 
-.center-title {
-    font-family: 'Yeseva One';
-    font-size: 5vw;
+.portfolio-link {
+  overflow-wrap: anywhere;
 }
 
-.button1 {
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    border-style: none;
-    box-sizing: border-box;
-    color: #263D59;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'Cabin', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.5;
-    margin: 1rem;
-    max-width: none;
-    min-height: 44px;
-    min-width: 10px;
-    outline: none;
-    overflow: hidden;
-    padding: 10px 36px 10px;
-    position: relative;
-    text-align: center;
-    text-transform: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+.fade-image {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
 }
 
-.button1.x {
-    border-radius: 32px;
-    padding: 9px 15px 9px;
+@media screen and (max-width: 700px) {
+  .text-container {
+    margin: 1rem 2rem !important;
+  }
 }
 
-.button1:hover {
-    opacity: .75;
+@media screen and (max-width: 900px) {
+  .about-logo {
+    margin: 1rem auto !important;
+  }
+  .footer {
+    min-height: 313px !important;
+  }
+  .contact {
+    max-height: 500px !important;
+  }
+  .contact-square {
+    max-height: 500px !important;
+  }
+  .graphics {
+    padding: 2rem !important;
+  }
 }
 
-.show-more {
-    font-family: 'Cabin', sans-serif;
+@media screen and (max-width: 500px) {
+  .contact-link {
+    font-size: 30px !important;
+    margin: 2rem !important;
+  }
+  .contact {
+    max-height: 400px !important;
+  }
+  .contact-square {
+    max-height: 400px !important;
+  }
 }
 
-.center-description {
-    font-family: 'Cabin', sans-serif;
-    color: #263D59;
-    font-size: 20px;
+@media screen and (max-width: 321px) {
+  .contact-link {
+    font-size: 20px !important;
+  }
 }
 
-.square-title {
-    font-size: 24px;
-    font-weight: 600;
-    padding: 3rem;
+@media screen and (min-height: 800px) {
+  .square-side {
+    max-height: 600px !important;
+  }
 }
 
-.square-sections {
-    display: flex;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 85vw;
-    height: 75vh;
-    color: inherit;
+@media screen and (min-height: 900px) {
+  .square-side {
+    max-height: 700px !important;
+  }
 }
 
-#academics.square-sections {
-    height: 60vh;
-}
-
-.section {
-    width: 33%;
-    height: inherit;
-    margin: 2rem 1rem;
-}
-
-#skills.section {
-    text-align: center;
-}
-
-.section-title {
-    font-size: 22px;
-    margin-bottom: .5rem;
-    white-space: break-spaces;
-    text-align: center;
-}
-
-.section-heading {
-    font-size: 20px;
-    margin-bottom: 1.5rem;
-    white-space: break-spaces;
-    text-align: center;
-}
-
-.section-subheading {
-    font-size: 16px;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.section-description {
-    font-size: 18px;
-    margin-bottom: .5rem;
-    white-space: break-spaces;
-}
-
-.section-img {
-    height: 45vh;
-    margin: 0rem auto 2rem;
-    display: block;
-    position: relative;
-}
-
-.image {
-    display: block;
-    height: 45vh;
-    margin: 0rem auto 2rem;
-    cursor: pointer;
-}
-
-#academics.image {
-    height: 20vh;
-}
-
-#academics.section-img {
-    height: 20vh;
-}
-
-#work.image {
-    height: 7vh;
-}
-
-#work.section-img {
-    height: 7vh;
-    margin: 2rem auto;
-}
-
-#skills.image {
-    height: 25vh;
-}
-
-#skills.section-img {
-    height: 23vh;
-}
-
-#skills.image {
-    height: 23vh;
-}
-
-#contact.image {
-    height: 11vh;
-}
-
-#contact.section-img {
-    height: 20vh;
-    text-align: center;
-    position: relative;
-    margin: auto;
-    top: 30%;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-}
-
-.section-img:hover .image {
-    opacity: 25%;
-}
-
-.section-img:hover .overlay {
-    opacity: 1;
-}
-
-.overlay-text {
-    color: #263D59;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.footer {
-    text-align: center;
-    margin: 1rem;
-    font-family: inherit;
-    font-size: 12px;
-    color: #7f7f7f;
-}
-
-
-/* MOBILE */
-.swiper {
-    overflow: hidden;
-    width: 75vw;
-    height: calc(90vh - 9rem);
-    margin: auto;
-    position: relative;
-}
-
-.inner {
-    white-space: nowrap;
-    transition: transform 0.3s;
-    height: calc(90vh - 13rem);
-}
-
-.slide {
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    height: inherit;
-    margin: auto;
-    overflow: auto;
-    position: relative;
-}
-
-.inner-slide {
-    position: relative;
-    top: 45%;
-    transform: translateY(-50%);
-}
-
-.arrows {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
-    width: 100%
-}
-
-.arrows>button {
-    margin: 1rem .5rem;
-    /* color: #526786; */
-    border: none;
-    font-size: 26px;
-    font-family: inherit;
-    background: inherit;
-}
-
-@media only screen and (max-width: 900px) {
-    .square {
-        height: calc(90vh - 3rem);
-    }
-
-    .center-title {
-        font-size: 25px;
-    }
-
-    .section-heading {
-        font-size: 18px;
-        margin-bottom: 1.5rem;
-        white-space: break-spaces;
-    }
-
-    .section-description {
-        font-size: 16px;
-    }
-
-    .square-title {
-        padding: 2rem;
-    }
-
-    .section-img {
-        height: 35vh;
-    }
-
-    #work.section-img {
-        margin: 1rem auto;
-    }
-
-    .image {
-        height: 100%;
-    }
-
-    #skills.section-title {
-        text-align: center;
-    }
-
-    #skills.section-description {
-        text-align: center;
-    }
-
-    #contact.section {
-        height: auto;
-        margin: auto;
-    }
-
-    #contact.section-img {
-        height: 10vh;
-    }
-
-    #contact.image {
-        height: 8vh;
-    }
-
-    #contact.square-sections {
-        display: flex;
-        flex-direction: column;
-    }
+@media screen and (max-width: 450px) {
+  .portfolio-link {
+    font-size: 30px !important;
+  }
+  .portfolio-subheader {
+    font-size: 16px !important;
+  }
+  .portfolio-subtext {
+    font-size: 14px !important;
+  }
 }

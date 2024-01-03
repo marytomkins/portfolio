@@ -1,12 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { $darkblue, $lightblue } from "./colors";
+import { $darkblue, $darkgreen, $lightblue, $lightgreen } from "./colors";
 
 const Tab = (props) => {
   let { tab, footer, mobile } = props;
 
   const Link = styled(NavLink)`
+    text-align: center;
     font-family: "Playfair Display", serif !important;
     align-items: center;
     cursor: pointer;
@@ -22,22 +23,22 @@ const Tab = (props) => {
     border: 0px;
     height: ${footer ? "auto" : "60px"};
     width: ${mobile ? "100%" : "50%"};
-    color: ${$darkblue};
+    color: ${footer ? $lightgreen : $darkblue};
     background-color: ${mobile
       ? tab.hoverBackground
       : footer
-      ? $lightblue
+      ? $darkgreen
       : "none"};
     &.active {
       background-color: ${footer
-        ? $lightblue
+        ? $darkgreen
         : tab.id === "home" && !mobile
         ? "none"
         : tab.hoverBackground};
     }
     &:hover {
       transition: all 0.2s ease-in-out;
-      background-color: ${footer ? $lightblue : tab.hoverBackground};
+      background-color: ${footer ? $darkgreen : tab.hoverBackground};
     }
   `;
 

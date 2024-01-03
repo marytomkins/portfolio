@@ -22,6 +22,7 @@ const styles = {
     textAlign: "center",
     bottom: "10px",
     position: "absolute",
+    fontSize: "12px",
   },
 };
 
@@ -68,7 +69,7 @@ const Footer = () => {
         rightSideStyle={{ width: "45%", display: "flex", alignItems: "center" }}
       />
 
-      <div style={{ ...styles.text }}>Developed by MT© 2023</div>
+      <div style={{ ...styles.text }}>Developed by MT© 2024</div>
     </div>
   );
 };

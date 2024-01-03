@@ -1,75 +1,40 @@
 import React from "react";
-import logo from "../images/logos/fullname1.JPG";
-import logo_hover from "../images/logos/fullname2.JPG";
 import homepageimg from "../images/homepageimg.PNG";
 import Image from "./Image";
-import Squares from "./Squares";
+import { $darkblue, $purple, $orange } from "./colors";
 
 const styles = {
-  leftSide: {
-    height: "auto",
-    margin: "auto",
+  homeStyle: { height: "100vh" },
+  containerStyle: {
+    width: "70%",
+    display: "flex",
+    flexDirection: "column",
+    color: $darkblue,
+    top: "50%",
+    left: "45%",
+    position: "absolute",
+    alignItems: "flex-start",
   },
-  flex: { flex: "1 1 450px" },
-  text: { fontSize: "35px", fontWeight: "800", marginLeft: "2rem" },
-  subText: { fontSize: "20px", fontWeight: "800", textAlign: "right" },
+  text: { fontSize: "6rem", lineHeight: 1, fontWeight: "500" },
+  subText: { fontSize: "1.5rem", marginTop: "1rem", fontWeight: "800" },
 };
 
-const Home = (props) => {
-  let { isMobile } = props;
+const Home = () => {
   return (
-    <Squares
-      containerStyle={{
-        width: "calc(100% - 4rem)",
-        margin: "0 2rem 2rem",
-        flexWrap: "wrap-reverse",
-        flexDirection: "row",
-      }}
-      leftSide={
-        <div>
-          <div style={{ ...styles.text }}>hi, i'm</div>
-          <Image
-            logo={logo}
-            logoHover={logo_hover}
-            customStyle={{
-              logo: { height: "auto", maxWidth: "100%" },
-              link: { height: "auto", margin: "auto" },
-            }}
-          />
-          <div style={{ ...styles.subText }}>
-            software engineer.
-            <br />
-            ui/ux designer.
-            <br />
-            graphic designer.
-            <br />
-            illustrator.
-          </div>
+    <div className="home" style={{ ...styles.homeStyle }}>
+      <div
+        className="container transform -translate-x-1/2 -translate-y-1/2"
+        style={{ ...styles.containerStyle }}
+      >
+        <div className="name" style={{ ...styles.text }}>
+          hi, i'm <span style={{ color: $purple }}>mary</span>{" "}
+          <span style={{ color: $orange }}>tomkins.</span>
         </div>
-      }
-      leftSideStyle={{
-        ...styles.leftSide,
-        ...styles.flex,
-        ...(!isMobile && { paddingLeft: "2rem" }),
-      }}
-      rightSide={
-        <Image
-          logo={homepageimg}
-          customStyle={{
-            link: { height: "auto", margin: "1rem auto" },
-            logo: {
-              height: "90%",
-              margin: "auto",
-              display: "block",
-              maxWidth: "100%",
-              objectFit: "contain",
-              maxHeight: "600px",
-            },
-          }}
-        />
-      }
-      rightSideStyle={{ margin: "auto", ...styles.flex }}
-    />
+        <div style={{ ...styles.subText }}>
+          software engineer. ui/ux designer. graphic designer. illustrator.
+        </div>
+      </div>
+    </div>
   );
 };
 

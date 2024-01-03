@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { $background, $darkblue, $lightblue } from "./colors";
+import { $darkblue, $lightblue } from "./colors";
 
 const Tab = (props) => {
   let { tab, footer, mobile } = props;
@@ -11,7 +11,7 @@ const Tab = (props) => {
     align-items: center;
     cursor: pointer;
     display: ${footer ? "block" : "inline-flex"};
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     justify-content: center;
     outline: 0;
@@ -27,12 +27,12 @@ const Tab = (props) => {
       ? tab.hoverBackground
       : footer
       ? $lightblue
-      : $background};
+      : "none"};
     &.active {
       background-color: ${footer
         ? $lightblue
         : tab.id === "home" && !mobile
-        ? $background
+        ? "none"
         : tab.hoverBackground};
     }
     &:hover {

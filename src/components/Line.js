@@ -19,6 +19,8 @@ const Line = (props) => {
     link: {
       color: color,
       textDecoration: "none",
+      display: "block",
+      width: "100%"
     },
   };
 

@@ -11,35 +11,20 @@ import { slideInRight } from "react-animations";
 
 const slideIn = keyframes`${slideInRight}`;
 const headerStyle = {
-  display: "flex",
   flexDirection: "row",
-  justifyContent: "space-evenly",
-  height: "150px",
-  padding: "1.5rem 0",
-  overflow: "hidden",
-  position: "relative",
-  top: 0,
+  alignItems: "flex-start",
+  top: "10%",
+  right: 0,
+  position: "absolute",
   zIndex: 99,
-  width: "100%",
-  backgroundColor: $background,
   transition: "all .3s linear",
 };
-const headerSides = {
-  width: "40%",
-  display: "flex",
-  margin: "45px 0",
-  transition: "all .3s linear",
-};
-const headerLogo = {
-  width: "20%",
-  transition: "all .3s linear",
-};
-const mobileHeader = {
-  height: "100px",
-  display: "flex",
-  flexDirection: "row",
-  margin: "1.5rem 0",
-  justifyContent: "space-between",
+const burger = {
+  position: "absolute",
+  top: "30px",
+  right: "30px",
+  cursor: "pointer",
+  zIndex: "1000",
 };
 const StyledBurger = styled.button`
   display: flex;
@@ -47,7 +32,6 @@ const StyledBurger = styled.button`
   justify-content: space-around;
   width: 2rem;
   height: 2rem;
-  margin: auto 2rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -109,23 +93,8 @@ const MobileNavBar = () => {
     setBarOpen(!barsOpen);
   };
   return (
-    <div className="mobile-header" style={{ ...mobileHeader }}>
-      <div>
-        <Image
-          id="headerLogo"
-          logo={logo}
-          customStyle={{
-            link: {
-              top: "10%",
-              position: "relative",
-              display: "flex",
-              marginLeft: "2rem",
-            },
-            logo: { borderRadius: "50%", height: "100%" },
-          }}
-        />
-      </div>
-      <div style={{ display: "flex" }}>
+    <div className="mobile-header">
+      <div style={{ ...burger }}>
         <StyledBurger open={barsOpen} onClick={() => handleToggle()}>
           <div />
           <div />
@@ -133,7 +102,7 @@ const MobileNavBar = () => {
         </StyledBurger>
       </div>
       {barsOpen && (
-        <div style={{ maxWidth: "432px", width: "100%", position: "absolute" }}>
+        <div style={{ maxWidth: "800px", width: "100%", position: "absolute", zIndex: 999 }}>
           <StyledMenu onClick={() => handleToggle()}>
             <Image
               logo={name}
@@ -142,9 +111,9 @@ const MobileNavBar = () => {
                 link: { height: "auto", margin: "0" },
               }}
             />
-            {Object.keys(tabs).map((tab) => (
-              <Tab tab={tabs[tab]} mobile={true} />
-            ))}
+            <Tab tab={tabs["about"]} mobile={true} />
+            <Tab tab={tabs["portfolio"]} mobile={true} />
+            <Tab tab={tabs["contact"]} mobile={true} />
           </StyledMenu>
         </div>
       )}
@@ -154,68 +123,33 @@ const MobileNavBar = () => {
 
 const NavBar = () => {
   return (
-    <div className="header" style={{ ...headerStyle }}>
-      <div className="headerLeft" style={{ ...headerSides }}>
-        <Tab tab={tabs["home"]} />
-        <Tab tab={tabs["about"]} />
-      </div>
-      <div className="logo" style={{ ...headerLogo }}>
-        <Image
-          id="headerLogo"
-          logo={logo}
-          logoHover={logo_hover}
-          customStyle={{
-            link: {
-              top: "10%",
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-            },
-            logo: { borderRadius: "50%", height: "100%" },
-          }}
-        />
-      </div>
-      <div className="headerRight" style={{ ...headerSides }}>
-        <Tab tab={tabs["portfolio"]} />
-        <Tab tab={tabs["contact"]} />
-      </div>
+    <div
+      className="header transform -translate-x-1/3 -translate-y-1/2"
+      style={{ ...headerStyle }}
+    >
+      <Tab tab={tabs["about"]} />
+      <Tab tab={tabs["portfolio"]} />
+      <Tab tab={tabs["contact"]} />
+      <Image
+        id="headerLogo"
+        logo={logo}
+        logoHover={logo_hover}
+        customStyle={{
+          link: { margin: "0 0rem 0 1rem" },
+          logo: { borderRadius: "50%", height: "62px" },
+        }}
+      />
     </div>
   );
 };
 
-const Header = (props) => {
-  let { isMobile } = props;
-
-  useEffect(() => {
-    window.addEventListener("scroll", (e) => {
-      const header = document.querySelector(".header");
-      const tabLeft = document.querySelector(".headerLeft");
-      const tabRight = document.querySelector(".headerRight");
-      if (
-        document.getElementById("root").clientHeight - 140 >
-        window.innerHeight
-      ) {
-        if (window.scrollY > 0) {
-          header.classList.add("no-padding-top");
-          tabLeft.classList.add("no-margin");
-          tabRight.classList.add("no-margin");
-          header.classList.add("add-shadow");
-        } else {
-          tabLeft.classList.remove("no-margin");
-          tabRight.classList.remove("no-margin");
-          header.classList.remove("add-shadow");
-          header.classList.remove("no-padding-top");
-        }
-      } else {
-        tabLeft.classList.remove("no-margin");
-        tabRight.classList.remove("no-margin");
-        header.classList.remove("add-shadow");
-        header.classList.remove("no-padding-top");
-      }
-    });
-  }, []);
-
-  return isMobile ? <MobileNavBar /> : <NavBar />;
+const Header = () => {
+  return (
+    <>
+      <MobileNavBar />
+      <NavBar />
+    </>
+  );
 };
 
 export default Header;

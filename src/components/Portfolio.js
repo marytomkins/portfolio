@@ -12,9 +12,8 @@ import {
 import altCard from "../images/altCard.jpg";
 import altCardHover from "../images/altCard_hver.JPG";
 import altLogo from "../images/altLogo.JPG";
-import amCard from "../images/amCard.JPG";
+import amCard from "../images/amCard.png";
 import amLogo from "../images/amLogo.png";
-import amCardHover from "../images/amCard_hover.jpg";
 import bbbCard from "../images/bbbCard.JPG";
 import bbbCardHover from "../images/bbbCard_hover.JPG";
 import bbbLogo from "../images/bbbLogo.JPG";
@@ -40,80 +39,11 @@ import Line from "./Line";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const styles = {
-  containerStyle: {
-    flexWrap: "wrap",
-  },
-  flex: { flex: "1 1 450px", maxHeight: "500px", minHeight: "500px" },
-  leftSide: { height: "inherit", textAlign: "left" },
-  rightSide: { height: "inherit", textAlign: "right" },
-  textContainer: {
-    position: "relative",
-    top: "50%",
-    transform: "translate(0, -50%)",
-    margin: "0 6rem",
-    height: "inherit",
-  },
-  header: {
-    fontSize: "40px",
-    fontWeight: 600,
-    marginBottom: ".5rem",
-    textDecoration: "none",
-  },
-  subheader: {
-    fontSize: "20px",
-    fontWeight: 600,
-  },
-  subText: {
-    fontSize: "18px",
-    fontFamily: "Plus Jakarta Sans, sans-serif",
-  },
-  imgCard: {
-    link: {
-      display: "flex",
-      justifyContent: "center",
-      height: "inherit",
-      margin: "1rem auto",
-    },
-    logo: {
-      height: "90%",
-      margin: "auto 4rem",
-      display: "block",
-      position: "relative",
-      maxWidth: "100%",
-      objectFit: "contain",
-      maxHeight: "450px",
-    },
-  },
-  leftLogo: {
-    link: { height: "40%", margin: "0rem" },
-    logo: {
-      height: "100%",
-      display: "block",
-      position: "relative",
-      maxWidth: "50%",
-      objectFit: "contain",
-      maxHeight: "228px",
-    },
-  },
-  rightLogo: {
-    link: {
-      height: "40%",
-      margin: "0rem",
-      display: "flex",
-      justifyContent: "flex-end",
-    },
-    logo: {
-      height: "100%",
-      display: "block",
-      maxWidth: "50%",
-      objectFit: "contain",
-      maxHeight: "228px",
-    },
-  },
   graphicContainer: {
     padding: "2rem 6rem",
   },
   graphics: {
+    margin: "2rem 0 6rem",
     display: "flex",
     flexWrap: "wrap",
     width: "100%",
@@ -125,435 +55,647 @@ const styles = {
   },
   graphicImg: {
     maxWidth: "100%",
+    boxShadow: "-5px 4px 13px 0px rgb(0 0 0 / 18%)",
+    borderRadius: "10px",
   },
 };
 
-const Portfolio = (props) => {
-  let { isMobile } = props;
-
+const Portfolio = () => {
   return (
     <>
-      <Squares
-        containerStyle={{ ...styles.containerStyle }}
-        leftSide={
-          <Image
-            logo={amCardHover}
-            logoHover={amCard}
-            customStyle={{ ...styles.imgCard }}
-            portfolio={isMobile}
-          />
-        }
-        leftSideStyle={{ ...styles.leftSide, ...styles.flex, display: "flex" }}
-        rightSide={
-          <div
-            className="text-container"
-            style={{ ...styles.textContainer, ...styles.rightTextContainers }}
-          >
-            <Image
-              logo={amLogo}
-              linkTo="https://aminteriorsnj.com/"
-              customStyle={{ ...styles.rightLogo }}
-            />
-            <a
-              className="portfolio-link"
-              style={{ ...styles.header, color: $darkblue }}
-              href="https://aminteriorsnj.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              aminteriorsnj.com
-            </a>
+      <div className="page">
+        <div className="header-space"></div>
+        <Squares
+          imgSrc={amCard}
+          squareContent={
             <div
-              className="portfolio-subheader"
-              style={{ ...styles.subheader }}
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkblue }}
             >
-              branding. web development. web design. web management.
+              <a
+                className="square-content-header"
+                href="https://aminteriorsnj.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={amLogo} className="logo-img"></img>
+                <div className="square-content-header">aminteriorsnj.com</div>
+              </a>
+              <div className="square-content-subtext">
+                branding. web development. web design. web management.
+                <hr
+                  style={{
+                    background: $darkblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  designed/developed website and created brand identity for
+                  <br />
+                  local construction company, as well as managing the <br />{" "}
+                  website content.
+                </div>
+              </div>
             </div>
-            <hr
-              style={{
-                background: $darkblue,
-                height: "1px",
-                border: "none",
-              }}
-            />
-            <div className="portfolio-subtext" style={{ ...styles.subText }}>
-              designed/developed website and created brand identity for local
-              construction company, as well as managing the website content.
-            </div>
-          </div>
-        }
-        rightSideStyle={{
-          ...styles.rightSide,
-          backgroundColor: $orange,
-          color: $darkblue,
-          ...styles.flex,
-        }}
-      />
-
-      <Squares
-        containerStyle={{ flexWrap: "wrap-reverse" }}
-        leftSide={
-          <div
-            className="text-container"
-            style={{ ...styles.textContainer, ...styles.rightTextContainers }}
-          >
-            <Image
-              logo={giftLogo}
-              linkTo="https://agiftfromtheheart.org/"
-              customStyle={{ ...styles.leftLogo }}
-            />
-            <a
-              className="portfolio-link"
-              style={{ ...styles.header, color: $darkblue }}
-              href="https://agiftfromtheheart.org/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              agiftfromtheheart.org
-            </a>
+          }
+        />
+        <Squares
+          imgSrc={giftCard}
+          squareContent={
             <div
-              className="portfolio-subheader"
-              style={{ ...styles.subheader }}
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkblue }}
             >
-              branding. web development. web design. web management.
+              <a
+                className="square-content-header"
+                href="https://agiftfromtheheart.org/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={giftLogo} className="logo-img"></img>
+                <div className="square-content-header">
+                  agiftfromtheheart.org
+                </div>
+              </a>
+              <div className="square-content-subtext">
+                branding. web design. web management.
+                <hr
+                  style={{
+                    background: $darkblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  designed website and created brand identity for local <br />{" "}
+                  non-profit organization, as well as managing the website
+                  content.
+                </div>
+              </div>
             </div>
-            <hr
-              style={{
-                background: $darkblue,
-                height: "1px",
-                border: "none",
-              }}
-            />
-            <div className="portfolio-subtext" style={{ ...styles.subText }}>
-              designed website and created brand identity for local non profit
-              organization, as well as managing the website content.
-            </div>
-          </div>
-        }
-        leftSideStyle={{
-          ...styles.leftSide,
-          backgroundColor: $purple,
-          color: $darkblue,
-          ...styles.flex,
-        }}
-        rightSide={
-          <Image
-            logo={giftCard}
-            logoHover={giftCardHover}
-            customStyle={{ ...styles.imgCard }}
-            portfolio={isMobile}
-          />
-        }
-        rightSideStyle={{
-          ...styles.rightSide,
-          ...styles.flex,
-          display: "flex",
-        }}
-      />
-
-      <Squares
-        containerStyle={{ ...styles.containerStyle }}
-        leftSide={
-          <Image logo={wordleCard} customStyle={{ ...styles.imgCard }} />
-        }
-        leftSideStyle={{ ...styles.leftSide, ...styles.flex, display: "flex" }}
-        rightSide={
-          <div
-            className="text-container"
-            style={{ ...styles.textContainer, ...styles.rightTextContainers }}
-          >
-            <Image
-              logo={wordleLogo}
-              linkTo="https://github.com/marytomkins/react-wordle"
-              customStyle={{ ...styles.rightLogo }}
-            />
-            <a
-              className="portfolio-link"
-              style={{ ...styles.header, color: $darkgreen }}
-              href="https://github.com/marytomkins/react-wordle"
-              target="_blank"
-              rel="noreferrer"
-            >
-              new jersey wordle.
-            </a>
-            <div lassName="portfolio-subheader" style={{ ...styles.subheader }}>
-              frontend development.
-            </div>
-            <hr
-              style={{
-                background: $darkgreen,
-                height: "1px",
-                border: "none",
-              }}
-            />
-            <div lassName="portfolio-subtext" style={{ ...styles.subText }}>
-              created a new jersey-themed wordle clone.
-            </div>
-          </div>
-        }
-        rightSideStyle={{
-          ...styles.rightSide,
-          backgroundColor: $lightgreen,
-          color: $darkgreen,
-          ...styles.flex,
-        }}
-      />
-      <Squares
-        containerStyle={{ flexWrap: "wrap-reverse" }}
-        leftSide={
-          <div
-            className="text-container"
-            style={{ ...styles.textContainer, ...styles.rightTextContainers }}
-          >
-            <Image
-              logo={readLogo}
-              linkTo="https://drive.google.com/file/d/15XvaVrpJFbKQamp0V9U8jEmn4-6wb_t_/view?usp=sharing"
-              customStyle={{ ...styles.leftLogo }}
-            />
-            <a
-              className="portfolio-link"
-              style={{ ...styles.header, color: $background }}
-              href="https://drive.google.com/file/d/15XvaVrpJFbKQamp0V9U8jEmn4-6wb_t_/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-            >
-              goodreads redesign.{" "}
-            </a>
+          }
+        />
+        <Squares
+          imgSrc={wordleCard}
+          squareContent={
             <div
-              className="portfolio-subheader"
-              style={{ ...styles.subheader }}
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkgreen }}
             >
-              branding. ui/ux design.
+              <a
+                className="square-content-header"
+                href="https://github.com/marytomkins/react-wordle/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={wordleLogo}
+                  className="logo-img"
+                  style={{ margin: "-1rem" }}
+                ></img>
+                <div className="square-content-header">new jersey wordle.</div>
+              </a>
+              <div className="square-content-subtext">
+                web development.
+                <hr
+                  style={{
+                    background: $darkgreen,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  created a new jersey themed wordle.
+                </div>
+              </div>
             </div>
-            <hr
-              style={{
-                background: $background,
-                height: "1px",
-                border: "none",
-              }}
-            />
-            <div className="portfolio-subtext" style={{ ...styles.subText }}>
-              conducted a mock-up ui/ux research & redesign case study for a
-              popular book-tracking app called goodreads.
-            </div>
-          </div>
-        }
-        leftSideStyle={{
-          ...styles.leftSide,
-          backgroundColor: $darkgreen,
-          color: $background,
-          ...styles.flex,
-        }}
-        rightSide={
-          <Image
-            logoHover={readCard}
-            logo={readCardHover}
-            customStyle={{ ...styles.imgCard }}
-            portfolio={isMobile}
-          />
-        }
-        rightSideStyle={{
-          ...styles.rightSide,
-          ...styles.flex,
-          display: "flex",
-        }}
-      />
-      <Squares
-        containerStyle={{ ...styles.containerStyle }}
-        leftSide={
-          <Image
-            logo={altCardHover}
-            logoHover={altCard}
-            customStyle={{ ...styles.imgCard }}
-            portfolio={isMobile}
-          />
-        }
-        leftSideStyle={{ ...styles.leftSide, ...styles.flex, display: "flex" }}
-        rightSide={
-          <div
-            className="text-container"
-            style={{ ...styles.textContainer, ...styles.rightTextContainers }}
-          >
-            <Image
-              logo={altLogo}
-              linkTo="https://www.instagram.com/alt_enders_softball/"
-              customStyle={{ ...styles.rightLogo }}
-            />
-            <a
-              className="portfolio-link"
-              style={{ ...styles.header, color: $lightblue }}
-              href="https://www.instagram.com/alt_enders_softball/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              alt enders softball.
-            </a>
+          }
+        />
+        <Squares
+          imgSrc={readCardHover}
+          squareContent={
             <div
-              className="portfolio-subheader"
-              style={{ ...styles.subheader }}
+              className="text-container"
+              id="portfolio"
+              style={{ color: $lightgreen }}
             >
-              branding. social media templates.
+              <a
+                className="square-content-header"
+                href="https://drive.google.com/file/d/15XvaVrpJFbKQamp0V9U8jEmn4-6wb_t_/view"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={readLogo}
+                  className="logo-img"
+                  style={{ marginBottom: "0" }}
+                ></img>
+                <div className="square-content-header">goodreads redesign.</div>
+              </a>
+              <div className="square-content-subtext">
+                branding. ui/ux design.
+                <hr
+                  style={{
+                    background: $lightgreen,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  conducted a mock-up ui/ux research & redesign case
+                  <br />
+                  study for a popular book-tracking app called goodreads.
+                </div>
+              </div>
             </div>
-            <hr
-              style={{
-                background: $lightblue,
-                height: "1px",
-                border: "none",
-              }}
-            />
-            <div className="portfolio-subtext" style={{ ...styles.subText }}>
-              designed and created logo and social media templates for local
-              men’s softball team (posts since oct 24 2023).
-            </div>
-          </div>
-        }
-        rightSideStyle={{
-          ...styles.rightSide,
-          backgroundColor: $darkblue,
-          color: $lightblue,
-          ...styles.flex,
-        }}
-      />
-
-      <Squares
-        containerStyle={{ flexWrap: "wrap-reverse" }}
-        leftSide={
-          <div
-            className="text-container"
-            style={{ ...styles.textContainer, ...styles.rightTextContainers }}
-          >
-            <Image
-              logo={bbbLogo}
-              linkTo="https://www.instagram.com/burlews_ballbusters/"
-              customStyle={{ ...styles.leftLogo }}
-            />
-            <a
-              className="portfolio-link"
-              style={{ ...styles.header, color: $darkgreen }}
-              href="https://www.instagram.com/burlews_ballbusters/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              ballbuster’s softball.
-            </a>
+          }
+        />
+        <Squares
+          imgSrc={altCardHover}
+          squareContent={
             <div
-              className="portfolio-subheader"
-              style={{ ...styles.subheader }}
+              className="text-container"
+              id="portfolio"
+              style={{ color: $lightblue }}
             >
-              branding. social media templates.
+              <a
+                className="square-content-header"
+                href="https://www.instagram.com/alt_enders_softball/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={altLogo} className="logo-img"></img>
+                <div className="square-content-header">
+                  alt enders softball.
+                </div>
+              </a>
+              <div className="square-content-subtext">
+                branding. social media management.
+                <hr
+                  style={{
+                    background: $lightblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  designed and created logo and social media templates
+                  <br /> for local men’s softball team (posts since oct 24
+                  2023).
+                </div>
+              </div>
             </div>
-            <hr
-              style={{
-                background: $darkgreen,
-                height: "1px",
-                border: "none",
-              }}
-            />
-            <div className="portfolio-subtext" style={{ ...styles.subText }}>
-              designed and created logo and social media templates for local
-              men’s softball team (posts since oct 20 2023).
-            </div>
-          </div>
-        }
-        leftSideStyle={{
-          ...styles.leftSide,
-          backgroundColor: $neongreen,
-          color: $darkgreen,
-          ...styles.flex,
-        }}
-        rightSide={
-          <Image
-            logo={bbbCardHover}
-            logoHover={bbbCard}
-            customStyle={{ ...styles.imgCard }}
-            portfolio={isMobile}
-          />
-        }
-        rightSideStyle={{
-          ...styles.rightSide,
-          ...styles.flex,
-          display: "flex",
-        }}
-      />
-      <Squares
-        containerStyle={{ ...styles.containerStyle }}
-        leftSide={
-          <Image logo={portfolioCard} customStyle={{ ...styles.imgCard }} />
-        }
-        leftSideStyle={{ ...styles.leftSide, ...styles.flex, display: "flex" }}
-        rightSide={
-          <div
-            className="text-container"
-            style={{ ...styles.textContainer, ...styles.rightTextContainers }}
-          >
-            <Image logo={portfolioLogo} customStyle={{ ...styles.rightLogo }} />
+          }
+        />
+        <Squares
+          imgSrc={bbbCardHover}
+          squareContent={
             <div
-              className="portfolio-link"
-              style={{ ...styles.header, cursor: "pointer", color: $darkblue }}
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkgreen }}
             >
-              this website!
+              <a
+                className="square-content-header"
+                href="https://www.instagram.com/burlews_ballbusters/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={bbbLogo} className="logo-img"></img>
+                <div className="square-content-header">
+                  ballbusters softball.
+                </div>
+              </a>
+              <div className="square-content-subtext">
+                branding. social media management.
+                <hr
+                  style={{
+                    background: $lightblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  designed and created logo and social media templates
+                  <br /> for local men’s softball team (posts since oct 20
+                  2023).
+                </div>
+              </div>
             </div>
+          }
+        />
+        <Squares
+          imgSrc={portfolioCard}
+          customContainerStyle={{ paddingBottom: "8rem" }}
+          squareContent={
             <div
-              className="portfolio-subheader"
-              style={{ ...styles.subheader }}
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkblue }}
             >
-              branding. web development. web design. web management.
+              <a className="square-content-header">
+                <img src={portfolioLogo} className="logo-img"></img>
+                <div className="square-content-header">this website!</div>
+              </a>
+              <div className="square-content-subtext">
+                branding. web development. web design. web management.
+                <hr
+                  style={{
+                    background: $darkblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  created all branding (logo, icon, color scheme), designed
+                  website, <br />
+                  and developed UI.
+                </div>
+              </div>
             </div>
-            <hr
-              style={{
-                background: $darkblue,
-                height: "1px",
-                border: "none",
-              }}
-            />
-            <div className="portfolio-subtext" style={{ ...styles.subText }}>
-              created all branding (logo, icon, color scheme), designed website,
-              and developed UI.
+          }
+        />
+        <Line
+          text={"view some code here."}
+          linkTo="https://github.com/marytomkins"
+          color={$darkgreen}
+          background={$lightgreen}
+        />
+        <div className="graphics" style={{ ...styles.graphicContainer }}>
+          <div className="square-content-header" style={{ color: $darkblue }}>
+            graphics.
+          </div>
+          <div style={{ ...styles.graphics }}>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic1}
+                style={{ ...styles.graphicImg }}
+              />
             </div>
-          </div>
-        }
-        rightSideStyle={{
-          ...styles.rightSide,
-          backgroundColor: $orange,
-          color: $darkblue,
-          ...styles.flex,
-        }}
-      />
-      <Line
-        text={"view some code here."}
-        linkTo="https://github.com/marytomkins"
-        color={$darkgreen}
-        background={$lightgreen}
-      />
-      <div className="graphics" style={{ ...styles.graphicContainer }}>
-        <div style={{ ...styles.header, color: $darkblue }}>graphics.</div>
-        <div style={{ ...styles.graphics }}>
-          <div style={{ ...styles.imgContainer }}>
-            <LazyLoadImage src={graphic1} style={{ ...styles.graphicImg }} />
-          </div>
-          <div style={{ ...styles.imgContainer }}>
-            <LazyLoadImage src={graphic2} style={{ ...styles.graphicImg }} />
-          </div>
-          <div style={{ ...styles.imgContainer }}>
-            <LazyLoadImage src={graphic3} style={{ ...styles.graphicImg }} />
-          </div>
-          <div style={{ ...styles.imgContainer }}>
-            <LazyLoadImage src={graphic4} style={{ ...styles.graphicImg }} />
-          </div>
-          <div style={{ ...styles.imgContainer }}>
-            <LazyLoadImage src={graphic5} style={{ ...styles.graphicImg }} />
-          </div>
-          <div style={{ ...styles.imgContainer }}>
-            <LazyLoadImage src={graphic6} style={{ ...styles.graphicImg }} />
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic2}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic3}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic4}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic5}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic6}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
           </div>
         </div>
+        <Line
+          text={"view more graphics here."}
+          linkTo="https://www.etsy.com/shop/EmptyArtt?ref=seller-platform-mcnav#items"
+          color={$darkgreen}
+          background={$lightgreen}
+        />
       </div>
-      <Line
-        text={"view more graphics here."}
-        linkTo="https://www.etsy.com/shop/EmptyArtt?ref=seller-platform-mcnav#items"
-        color={$darkgreen}
-        background={$lightgreen}
-      />
+      <div className="mobile-page">
+        <div className="header-space"></div>
+        <Squares
+          mobile
+          imgSrc={amCard}
+          squareContent={
+            <div
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkblue }}
+            >
+              <a
+                className="square-content-header"
+                href="https://aminteriorsnj.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={amLogo} className="logo-img"></img>
+                <div className="square-content-header">aminteriorsnj.com</div>
+              </a>
+              <div className="square-content-subtext">
+                branding. web development. web design. web management.
+                <hr
+                  style={{
+                    background: $darkblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  designed/developed website and created brand identity for
+                  local construction company, as well as managing the website
+                  content.
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <Squares
+          mobile
+          imgSrc={giftCard}
+          squareContent={
+            <div
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkblue }}
+            >
+              <a
+                className="square-content-header"
+                href="https://agiftfromtheheart.org/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={giftLogo} className="logo-img"></img>
+                <div className="square-content-header">
+                  agiftfromtheheart.org
+                </div>
+              </a>
+              <div className="square-content-subtext">
+                branding. web design. web management.
+                <hr
+                  style={{
+                    background: $darkblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  designed website and created brand identity for local
+                  non-profit organization, as well as managing the website
+                  content.
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <Squares
+          mobile
+          imgSrc={wordleCard}
+          squareContent={
+            <div
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkgreen }}
+            >
+              <a
+                className="square-content-header"
+                href="https://github.com/marytomkins/react-wordle/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={wordleLogo} className="logo-img"></img>
+                <div className="square-content-header">new jersey wordle.</div>
+              </a>
+              <div className="square-content-subtext">
+                web development.
+                <hr
+                  style={{
+                    background: $darkgreen,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  created a new jersey themed wordle.
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <Squares
+          mobile
+          imgSrc={readCardHover}
+          squareContent={
+            <div
+              className="text-container"
+              id="portfolio"
+              style={{ color: $lightgreen }}
+            >
+              <a
+                className="square-content-header"
+                href="https://drive.google.com/file/d/15XvaVrpJFbKQamp0V9U8jEmn4-6wb_t_/view"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={readLogo}
+                  className="logo-img"
+                  style={{ marginBottom: "0" }}
+                ></img>
+                <div className="square-content-header">goodreads redesign.</div>
+              </a>
+              <div className="square-content-subtext">
+                branding. ui/ux design.
+                <hr
+                  style={{
+                    background: $lightgreen,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  conducted a mock-up ui/ux research & redesign case study for a
+                  popular book-tracking app called goodreads.
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <Squares
+          mobile
+          imgSrc={altCardHover}
+          squareContent={
+            <div
+              className="text-container"
+              id="portfolio"
+              style={{ color: $lightblue }}
+            >
+              <a
+                className="square-content-header"
+                href="https://www.instagram.com/alt_enders_softball/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={altLogo} className="logo-img"></img>
+                <div className="square-content-header">
+                  alt enders softball.
+                </div>
+              </a>
+              <div className="square-content-subtext">
+                branding. social media management.
+                <hr
+                  style={{
+                    background: $lightblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  designed and created logo and social media templates for local
+                  men’s softball team (posts since oct 24 2023).
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <Squares
+          mobile
+          imgSrc={bbbCardHover}
+          squareContent={
+            <div
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkgreen }}
+            >
+              <a
+                className="square-content-header"
+                href="https://www.instagram.com/burlews_ballbusters/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={bbbLogo} className="logo-img"></img>
+                <div className="square-content-header">
+                  ballbusters softball.
+                </div>
+              </a>
+              <div className="square-content-subtext">
+                branding. social media management.
+                <hr
+                  style={{
+                    background: $lightblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  designed and created logo and social media templates for local
+                  men’s softball team (posts since oct 20 2023).
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <Squares
+          mobile
+          imgSrc={portfolioCard}
+          squareContent={
+            <div
+              className="text-container"
+              id="portfolio"
+              style={{ color: $darkblue }}
+            >
+              <a className="square-content-header">
+                <img src={portfolioLogo} className="logo-img"></img>
+                <div className="square-content-header">this website!</div>
+              </a>
+              <div className="square-content-subtext">
+                branding. web development. web design. web management.
+                <hr
+                  style={{
+                    background: $darkblue,
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+                <div className="square-content-subtext-subtext">
+                  created all branding (logo, icon, color scheme), designed
+                  website, and developed UI.
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <Line
+          text={"view some code here."}
+          linkTo="https://github.com/marytomkins"
+          color={$darkgreen}
+          background={$lightgreen}
+        />
+        <div className="graphics" style={{ ...styles.graphicContainer }}>
+          <div className="square-content-header" style={{ color: $darkblue, textAlign: "center" }}>
+            graphics.
+          </div>
+          <div style={{ ...styles.graphics }}>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic1}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic2}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic3}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic4}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic5}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+            <div className="active" style={{ ...styles.imgContainer }}>
+              <LazyLoadImage
+                className="hover-image-effect"
+                src={graphic6}
+                style={{ ...styles.graphicImg }}
+              />
+            </div>
+          </div>
+        </div>
+        <Line
+          text={"view more graphics here."}
+          linkTo="https://www.etsy.com/shop/EmptyArtt?ref=seller-platform-mcnav#items"
+          color={$darkgreen}
+          background={$lightgreen}
+        />
+      </div>
     </>
   );
 };

@@ -11,7 +11,7 @@ import Line from "./Line";
 const About = () => {
   return (
     <>
-      <div className="about">
+      <div className="page">
         <div className="header-space"></div>
         <Squares
           imgSrc={me}
@@ -132,7 +132,7 @@ const About = () => {
           }
         />
         <Line
-          text={"view entire resume here."}
+          text={"view full resume here."}
           linkTo={
             "https://drive.google.com/file/d/1faxwydghyzlEKc3MXAm2zUe3Jy6PYTeK/view?usp=sharing"
           }
@@ -140,7 +140,7 @@ const About = () => {
           background={$neongreen}
         />
       </div>
-      <div className="mobile-about">
+      <div className="mobile-page">
         <div className="header-space"></div>
         <Squares
           mobile
@@ -260,7 +260,7 @@ const About = () => {
           }
         />
         <Line
-          text={"view entire resume here."}
+          text={"view full resume here."}
           linkTo={
             "https://drive.google.com/file/d/1faxwydghyzlEKc3MXAm2zUe3Jy6PYTeK/view?usp=sharing"
           }

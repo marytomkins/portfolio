@@ -23,7 +23,7 @@ const Footer = () => {
         <Tab tab={tabs["contact"]} footer={true} />
       </div>
       <div className="footer-disclaimer">
-        developed by mt ©
+        developed by mt 
         <div
           style={{ fontSize: "18px", display: "flex", alignItems: "center", marginLeft: "6px" }}
         >

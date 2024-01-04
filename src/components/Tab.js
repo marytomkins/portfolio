@@ -16,7 +16,7 @@ const Tab = (props) => {
     font-weight: 600;
     justify-content: center;
     outline: 0;
-    margin: ${footer ? "10px" : "0"};
+    margin: ${footer ? "10px 0" : "0 4px"};
     padding: ${footer ? "0" : "0 1rem"};
     text-decoration: none;
     transition: all 0.3s;
@@ -24,6 +24,7 @@ const Tab = (props) => {
     height: ${footer ? "auto" : "60px"};
     width: ${mobile ? "100%" : "50%"};
     color: ${footer ? $lightgreen : $darkblue};
+    border-radius: 10px;
     background-color: ${mobile
       ? tab.hoverBackground
       : footer

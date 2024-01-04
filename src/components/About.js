@@ -145,7 +145,7 @@ const About = () => {
         <Squares
           mobile
           imgSrc={me}
-          customImgStyle={{ boxShadow: "none" }}
+          customImgStyle={{ boxShadow: "none", marginLeft: "-1rem" }}
           squareContent={
             <div className="text-container" style={{ color: $darkgreen }}>
               <div className="square-content-header">get to know me.</div>
@@ -234,7 +234,6 @@ const About = () => {
         />
         <Squares
           mobile
-          customContainerStyle={{ paddingBottom: "8rem" }}
           imgSrc={skills}
           customImgStyle={{ borderRadius: "50%" }}
           squareContent={

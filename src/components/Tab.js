@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { $darkblue, $darkgreen, $lightblue, $lightgreen } from "./colors";
+import { $darkblue, $darkgreen, $lightgreen } from "./colors";
 
 const Tab = (props) => {
   let { tab, footer, mobile } = props;

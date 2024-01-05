@@ -133,6 +133,8 @@ img.hover-image-effect:hover {
 
 .page {
   display: block;
+  transition: background-color 1s;
+  min-height: 100vh;
 }
 
 .mobile-page {
@@ -257,11 +259,33 @@ img.hover-image-effect:hover {
   bottom: 0;
   right: 0;
   margin: 0 2rem 1rem;
+  font-family: "Minal";
   font-size: 2rem;
   font-weight: 700;
 }
 
+.home-buttons {
+  margin-top: 1.2rem;
+  display: flex;
+}
+
+.mobile-home-buttons {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
+  .home-buttons {
+    display: none;
+  }
+  .mobile-home-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.2rem;
+    justify-content: space-evenly;
+    height: 9rem;
+    text-align: left;
+    min-height: min-content;
+  }
   .header {
     display: none;
   }
@@ -282,6 +306,8 @@ img.hover-image-effect:hover {
   }
   .mobile-page {
     display: block;
+    transition: background-color 1s;
+    min-height: 100vh;
   }
   .square-content {
     margin: 0 3rem;

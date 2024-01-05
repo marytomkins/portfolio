@@ -5,10 +5,11 @@ const MobileSquares = ({
   squareContent,
   customImgStyle,
   customContainerStyle,
+  visible
 }) => {
   return (
     <div
-      className="mobile-square-container fade-in-section visible" // to add : active
+      className={`mobile-square-container fade-in-section ${visible}`} // to add : active
       style={{ ...customContainerStyle }}
     >
       <img
@@ -27,10 +28,11 @@ const DesktopSquares = ({
   squareContent,
   customImgStyle,
   customContainerStyle,
+  active,
 }) => {
   return (
     <div
-      className="square-container active" // to add : active
+      className={`square-container ${active}`} // to add : active
       style={{ ...customContainerStyle }}
     >
       <div style={{ display: "flex" }}>
@@ -47,7 +49,7 @@ const DesktopSquares = ({
 };
 
 const Squares = (props) => {
-  let { mobile, imgSrc, squareContent, customImgStyle, customContainerStyle } =
+  let { mobile, imgSrc, squareContent, customImgStyle, customContainerStyle, active, visible } =
     props;
 
   return (
@@ -58,6 +60,7 @@ const Squares = (props) => {
           squareContent={squareContent}
           customImgStyle={customImgStyle}
           customContainerStyle={customContainerStyle}
+          visible={visible}
         />
       ) : (
         <DesktopSquares
@@ -65,6 +68,7 @@ const Squares = (props) => {
           squareContent={squareContent}
           customImgStyle={customImgStyle}
           customContainerStyle={customContainerStyle}
+          active={active}
         />
       )}
     </>

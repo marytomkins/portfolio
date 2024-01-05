@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   $darkblue,
+  $darkblueBackground,
   $darkgreen,
+  $darkgreenBackground,
   $lightblue,
   $lightgreen,
+  $lightgreenBackground,
+  $neongreenBackground,
+  $orange,
+  $orangeBackground,
+  $purple,
+  $purpleBackground,
 } from "./colors";
 import altCardHover from "../images/altCard_hver.JPG";
 import altLogo from "../images/altLogo.JPG";
@@ -29,9 +37,19 @@ import Squares from "./Squares";
 import Line from "./Line";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
+const gift = 300;
+const wordle = 1100;
+const goodreads = 1800;
+const altend = 2500;
+const bbb = 3200;
+const port = 3900;
+const graphs = 4600;
+const marginBottom = 160;
+
 const styles = {
   graphicContainer: {
     padding: "2rem 6rem",
+    backgroundColor: $purpleBackground
   },
   graphics: {
     margin: "2rem 0 6rem",
@@ -52,12 +70,102 @@ const styles = {
 };
 
 const Portfolio = () => {
+  const [active, setActive] = useState(false);
+  const [activeGH, setActiveGH] = useState(false);
+  const [activeW, setActiveW] = useState(false);
+  const [activeGR, setActiveGR] = useState(false);
+  const [activeAEB, setActiveAEB] = useState(false);
+  const [activeBB, setActiveBB] = useState(false);
+  const [activeP, setActiveP] = useState(false);
+  const [activeG, setActiveG] = useState(false);
+
+  const changeBackground = () => {
+    const scroll = window.scrollY;
+    let background = document.querySelector(".page");
+    if (background) {
+      if (scroll < gift) {
+        background.style.backgroundColor = $orangeBackground;
+      } else if (scroll >= gift && scroll < wordle) {
+        setActiveGH(true);
+        background.style.backgroundColor = $purpleBackground;
+      } else if (scroll >= wordle && scroll < goodreads) {
+        setActiveW(true);
+        background.style.backgroundColor = $lightgreenBackground;
+      } else if (scroll >= goodreads && scroll < altend) {
+        setActiveGR(true);
+        background.style.backgroundColor = $darkgreenBackground;
+      } else if ((scroll >= altend) & (scroll < bbb)) {
+        setActiveAEB(true);
+        background.style.backgroundColor = $darkblueBackground;
+      } else if ((scroll >= bbb) & (scroll < port)) {
+        setActiveBB(true);
+        background.style.backgroundColor = $neongreenBackground;
+      } else if ((scroll >= port) & (scroll < graphs)) {
+        setActiveP(true);
+        background.style.backgroundColor = $orangeBackground;
+      } else if ((scroll >= graphs) & (scroll < port)) {
+        setActiveG(true);
+        background.style.backgroundColor = $purpleBackground;
+      }
+    }
+  };
+
+  const changeMobileBackground = () => {
+    const scroll = window.scrollY;
+    const pageLength = window.innerHeight;
+    const sectionLength = pageLength + marginBottom;
+    const halfPage = window.innerHeight / 2;
+    let background = document.querySelector(".mobile-page");
+    if (background) {
+      if (scroll < halfPage + marginBottom) {
+        background.style.backgroundColor = $orangeBackground;
+      } else if (
+        scroll >= halfPage + marginBottom &&
+        scroll < halfPage + sectionLength
+      ) {
+        setActiveGH(true);
+        background.style.backgroundColor = $purpleBackground;
+      } else if (
+        scroll >= 2 * sectionLength - halfPage &&
+        scroll < 3 * sectionLength - halfPage
+      ) {
+        setActiveW(true);
+        background.style.backgroundColor = $lightgreenBackground;
+      } else if (
+        scroll >= 3 * sectionLength - halfPage &&
+        scroll < 4 * sectionLength - halfPage
+      ) {
+        setActiveGR(true);
+        background.style.backgroundColor = $darkgreenBackground;
+      } else if (scroll >= 4 * sectionLength - halfPage && scroll < 5 * sectionLength - halfPage) {
+        setActiveAEB(true);
+        background.style.backgroundColor = $darkblueBackground;
+      } else if (scroll >= 5 * sectionLength - halfPage && scroll < 6 * sectionLength - halfPage) {
+        setActiveBB(true);
+        background.style.backgroundColor = $neongreenBackground;
+      }else if (scroll >= 6 * sectionLength - halfPage) {
+        setActiveP(true);
+        background.style.backgroundColor = $orangeBackground;
+      }
+    }
+  };
+
+  useEffect(() => {
+    setActive(true);
+    if (window.innerWidth > 800) {
+      window.addEventListener("scroll", changeBackground);
+    } else if (window.innerWidth <= 800) {
+      window.addEventListener("scroll", changeMobileBackground);
+    }
+  }, []);
+
   return (
     <>
-      <div className="page">
+      <div className="page" style={{ backgroundColor: $orangeBackground }}>
         <div className="header-space"></div>
         <Squares
           imgSrc={amCard}
+          active={active ? "active" : ""}
           squareContent={
             <div
               className="text-container"
@@ -94,6 +202,7 @@ const Portfolio = () => {
         />
         <Squares
           imgSrc={giftCard}
+          active={activeGH ? "active" : ""}
           squareContent={
             <div
               className="text-container"
@@ -131,6 +240,7 @@ const Portfolio = () => {
         />
         <Squares
           imgSrc={wordleCard}
+          active={activeW ? "active" : ""}
           squareContent={
             <div
               className="text-container"
@@ -168,6 +278,7 @@ const Portfolio = () => {
         />
         <Squares
           imgSrc={readCardHover}
+          active={activeGR ? "active" : ""}
           squareContent={
             <div
               className="text-container"
@@ -207,6 +318,7 @@ const Portfolio = () => {
         />
         <Squares
           imgSrc={altCardHover}
+          active={activeAEB ? "active" : ""}
           squareContent={
             <div
               className="text-container"
@@ -244,6 +356,7 @@ const Portfolio = () => {
         />
         <Squares
           imgSrc={bbbCardHover}
+          active={activeBB ? "active" : ""}
           squareContent={
             <div
               className="text-container"
@@ -281,6 +394,7 @@ const Portfolio = () => {
         />
         <Squares
           imgSrc={portfolioCard}
+          active={activeP ? "active" : ""}
           customContainerStyle={{ paddingBottom: "8rem" }}
           squareContent={
             <div
@@ -313,10 +427,13 @@ const Portfolio = () => {
         <Line
           text={"view some code here."}
           linkTo="https://github.com/marytomkins"
-          color={$darkgreen}
-          background={$lightgreen}
+          color={$darkblue}
+          background={$orange}
         />
-        <div className="graphics" style={{ ...styles.graphicContainer }}>
+        <div
+          className="graphics"
+          style={{ ...styles.graphicContainer }}
+        >
           <div className="square-content-header" style={{ color: $darkblue }}>
             graphics.
           </div>
@@ -372,11 +489,13 @@ const Portfolio = () => {
           background={$lightgreen}
         />
       </div>
-      <div className="mobile-page">
+      <div className="mobile-page" style={{ backgroundColor: $orangeBackground }}>
         <div className="header-space"></div>
         <Squares
           mobile
           imgSrc={amCard}
+          visible={active ? "visible" : ""}
+
           squareContent={
             <div
               className="text-container"
@@ -413,6 +532,8 @@ const Portfolio = () => {
         <Squares
           mobile
           imgSrc={giftCard}
+          visible={activeGH ? "visible" : ""}
+
           squareContent={
             <div
               className="text-container"
@@ -451,6 +572,8 @@ const Portfolio = () => {
         <Squares
           mobile
           imgSrc={wordleCard}
+          visible={activeW ? "visible" : ""}
+
           squareContent={
             <div
               className="text-container"
@@ -485,6 +608,8 @@ const Portfolio = () => {
         <Squares
           mobile
           imgSrc={readCardHover}
+          visible={activeGR ? "visible" : ""}
+
           squareContent={
             <div
               className="text-container"
@@ -524,6 +649,8 @@ const Portfolio = () => {
         <Squares
           mobile
           imgSrc={altCardHover}
+          visible={activeAEB ? "visible" : ""}
+
           squareContent={
             <div
               className="text-container"
@@ -561,6 +688,8 @@ const Portfolio = () => {
         <Squares
           mobile
           imgSrc={bbbCardHover}
+          visible={activeBB ? "visible" : ""}
+
           squareContent={
             <div
               className="text-container"
@@ -598,6 +727,8 @@ const Portfolio = () => {
         <Squares
           mobile
           imgSrc={portfolioCard}
+          visible={activeP ? "visible" : ""}
+
           squareContent={
             <div
               className="text-container"
@@ -628,11 +759,14 @@ const Portfolio = () => {
         <Line
           text={"view some code here."}
           linkTo="https://github.com/marytomkins"
-          color={$darkgreen}
-          background={$lightgreen}
+          color={$darkblue}
+          background={$orange}
         />
         <div className="graphics" style={{ ...styles.graphicContainer }}>
-          <div className="square-content-header" style={{ color: $darkblue, textAlign: "center" }}>
+          <div
+            className="square-content-header"
+            style={{ color: $darkblue, textAlign: "center" }}
+          >
             graphics.
           </div>
           <div style={{ ...styles.graphics }}>

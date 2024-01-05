@@ -7,4 +7,11 @@ module.exports = {
   $lightgreen: "#d6fccf",
   $orange: "#fc9d59",
   $background: "#f5fff2",
+  $neongreenBackground: `rgba(216, 226, 103, .6)`,
+  $darkgreenBackground: "rgba(0, 88, 75, .85)",
+  $darkblueBackground: "rgba(53, 107, 137, .95)",
+  $purpleBackground: "rgba(246, 216, 247, .75)",
+  $lightblueBackground: "rgba(206, 238, 255, 1)",
+  $lightgreenBackground: "rgba(214, 252, 207, 1)",
+  $orangeBackground: "rgba(252, 157, 89, .75)",
 };

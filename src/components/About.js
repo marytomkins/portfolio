@@ -1,5 +1,15 @@
-import React from "react";
-import { $darkblue, $darkgreen, $neongreen, $orange } from "./colors";
+import React, { useState, useEffect } from "react";
+import {
+  $darkblue,
+  $darkgreen,
+  $lightblueBackground,
+  $lightgreenBackground,
+  $neongreen,
+  $neongreenBackground,
+  $orange,
+  $orangeBackground,
+  $purpleBackground,
+} from "./colors";
 import me from "../images/aboutimg.PNG";
 import school from "../images/schoolimg.PNG";
 import sync from "../images/sync.jpg";
@@ -8,19 +18,92 @@ import skills from "../images/skills.PNG";
 import Squares from "./Squares";
 import Line from "./Line";
 
-const About = () => {
-  const background = document.querySelector(".page");
+const education = 300;
+const synchrony = 1100;
+const verizonn = 1800;
+const skillss = 2500;
+const marginBottom = 160;
 
-  // window.addEventListener("scroll", () => {
-  //   background.style.backgroundColor = `${$orange} !important`;
-  // });
+const About = () => {
+  const [active, setActive] = useState(false);
+  const [activeE, setActiveE] = useState(false);
+  const [activeS, setActiveS] = useState(false);
+  const [activeV, setActiveV] = useState(false);
+  const [activeSk, setActiveSk] = useState(false);
+
+  const changeBackground = () => {
+    const scroll = window.scrollY;
+    let background = document.querySelector(".page");
+    if (background) {
+      if (scroll < education) {
+        background.style.backgroundColor = $neongreenBackground;
+      } else if (scroll >= education && scroll < synchrony) {
+        setActiveE(true);
+        background.style.backgroundColor = $orangeBackground;
+      } else if (scroll >= synchrony && scroll < verizonn) {
+        setActiveS(true);
+        background.style.backgroundColor = $purpleBackground;
+      } else if (scroll >= verizonn && scroll < skillss) {
+        setActiveV(true);
+        background.style.backgroundColor = $lightblueBackground;
+      } else if (scroll >= skillss) {
+        setActiveSk(true);
+        background.style.backgroundColor = $lightgreenBackground;
+      }
+    }
+  };
+
+  const changeMobileBackground = () => {
+    const scroll = window.scrollY;
+    const pageLength = window.innerHeight;
+    const sectionLength = pageLength + marginBottom;
+    const halfPage = window.innerHeight / 2;
+    let background = document.querySelector(".mobile-page");
+    if (background) {
+      if (scroll < halfPage + marginBottom) {
+        background.style.backgroundColor = $neongreenBackground;
+      } else if (
+        scroll >= halfPage + marginBottom &&
+        scroll < halfPage + sectionLength
+      ) {
+        setActiveE(true);
+        background.style.backgroundColor = $orangeBackground;
+      } else if (
+        scroll >= 2 * sectionLength - halfPage &&
+        scroll < 3 * sectionLength - halfPage
+      ) {
+        setActiveS(true);
+        background.style.backgroundColor = $purpleBackground;
+      } else if (
+        scroll >= 3 * sectionLength - halfPage &&
+        scroll < 4 * sectionLength - halfPage
+      ) {
+        setActiveV(true);
+        background.style.backgroundColor = $lightblueBackground;
+      } else if (scroll >= 4 * sectionLength - halfPage) {
+        setActiveSk(true);
+        background.style.backgroundColor = $lightgreenBackground;
+      }
+    }
+  };
+
+  useEffect(() => {
+    setActive(true);
+    if (window.innerWidth > 800) {
+      window.addEventListener("scroll", changeBackground);
+    } else if (window.innerWidth <= 800) {
+      window.addEventListener("scroll", changeMobileBackground);
+    }
+  }, []);
+
   return (
     <>
-      <div className="page" >
+      <div className="page" style={{ backgroundColor: $neongreenBackground }}>
         <div className="header-space"></div>
         <Squares
           imgSrc={me}
           customImgStyle={{ boxShadow: "none" }}
+          active={active ? "active" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkgreen }}>
               <div className="square-content-header">a little about me.</div>
@@ -39,6 +122,7 @@ const About = () => {
         />
         <Squares
           imgSrc={school}
+          active={activeE ? "active" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkblue }}>
               <div className="square-content-header">education.</div>
@@ -63,6 +147,7 @@ const About = () => {
         />
         <Squares
           imgSrc={sync}
+          active={activeS ? "active" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkblue }}>
               <div className="square-content-header">
@@ -88,6 +173,7 @@ const About = () => {
 
         <Squares
           imgSrc={verizon}
+          active={activeV ? "active" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkblue }}>
               <div className="square-content-header">past work experience.</div>
@@ -113,6 +199,7 @@ const About = () => {
           customContainerStyle={{ paddingBottom: "8rem" }}
           imgSrc={skills}
           customImgStyle={{ borderRadius: "50%" }}
+          active={activeSk ? "active" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkgreen }}>
               <div className="square-content-header">skills.</div>
@@ -145,12 +232,16 @@ const About = () => {
           background={$neongreen}
         />
       </div>
-      <div className="mobile-page">
+      <div
+        className="mobile-page"
+        style={{ backgroundColor: $neongreenBackground }}
+      >
         <div className="header-space"></div>
         <Squares
           mobile
           imgSrc={me}
           customImgStyle={{ boxShadow: "none", marginLeft: "-1rem" }}
+          visible={active ? "visible" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkgreen }}>
               <div className="square-content-header">get to know me.</div>
@@ -167,6 +258,7 @@ const About = () => {
         <Squares
           mobile
           imgSrc={school}
+          visible={activeE ? "visible" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkblue }}>
               <div className="square-content-header">education.</div>
@@ -192,6 +284,7 @@ const About = () => {
         <Squares
           mobile
           imgSrc={sync}
+          visible={activeS ? "visible" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkblue }}>
               <div className="square-content-header">
@@ -217,6 +310,7 @@ const About = () => {
         <Squares
           mobile
           imgSrc={verizon}
+          visible={activeV ? "visible" : ""}
           squareContent={
             <div className="text-container" style={{ color: $darkblue }}>
               <div className="square-content-header">past work experience.</div>
@@ -240,6 +334,7 @@ const About = () => {
         <Squares
           mobile
           imgSrc={skills}
+          visible={activeSk ? "visible" : ""}
           customImgStyle={{ borderRadius: "50%" }}
           squareContent={
             <div className="text-container" style={{ color: $darkgreen }}>

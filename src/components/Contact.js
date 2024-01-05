@@ -8,9 +8,6 @@ import {
   $orange,
   $purple,
 } from "./colors";
-import Squares from "./Squares";
-
-const styles = {};
 
 const Contact = () => {
   return (

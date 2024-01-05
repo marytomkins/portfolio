@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { $darkblue, $darkgreen, $neongreen } from "./colors";
+import React from "react";
+import { $darkblue, $darkgreen, $neongreen, $orange } from "./colors";
 import me from "../images/aboutimg.PNG";
 import school from "../images/schoolimg.PNG";
 import sync from "../images/sync.jpg";
@@ -9,16 +9,21 @@ import Squares from "./Squares";
 import Line from "./Line";
 
 const About = () => {
+  const background = document.querySelector(".page");
+
+  // window.addEventListener("scroll", () => {
+  //   background.style.backgroundColor = `${$orange} !important`;
+  // });
   return (
     <>
-      <div className="page">
+      <div className="page" >
         <div className="header-space"></div>
         <Squares
           imgSrc={me}
           customImgStyle={{ boxShadow: "none" }}
           squareContent={
             <div className="text-container" style={{ color: $darkgreen }}>
-              <div className="square-content-header">get to know me.</div>
+              <div className="square-content-header">a little about me.</div>
               <div className="square-content-subtext">
                 my name is mary tomkins. i am 25. i am from new jersey
                 <br /> and currently live in belmar. i have a black lab named

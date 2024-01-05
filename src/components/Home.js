@@ -1,6 +1,4 @@
 import React from "react";
-import homepageimg from "../images/homepageimg.PNG";
-import Image from "./Image";
 import { $darkblue, $purple, $orange } from "./colors";
 
 const styles = {

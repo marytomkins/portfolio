@@ -1,17 +1,7 @@
 import React from "react";
 import "../App.css";
-import { $lightblue } from "./colors";
-import Squares from "./Squares";
-import Image from "./Image";
 import Tab from "./Tab";
 import { tabs } from "./tabs";
-import logo_hover from "../images/logos/initials1.JPG";
-import logo from "../images/logos/initials2.JPG";
-
-const styles = {
-  footer: {},
-  text: {},
-};
 
 const Footer = () => {
   return (

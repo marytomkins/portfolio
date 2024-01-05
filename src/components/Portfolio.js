@@ -1,26 +1,18 @@
 import React from "react";
 import {
-  $background,
   $darkblue,
   $darkgreen,
   $lightblue,
   $lightgreen,
-  $neongreen,
-  $orange,
-  $purple,
 } from "./colors";
-import altCard from "../images/altCard.jpg";
 import altCardHover from "../images/altCard_hver.JPG";
 import altLogo from "../images/altLogo.JPG";
 import amCard from "../images/amCard.png";
 import amLogo from "../images/amLogo.png";
-import bbbCard from "../images/bbbCard.JPG";
 import bbbCardHover from "../images/bbbCard_hover.JPG";
 import bbbLogo from "../images/bbbLogo.JPG";
 import giftCard from "../images/giftCard.JPG";
-import giftCardHover from "../images/giftCard_hover.jpg";
 import giftLogo from "../images/giftlogo.jpg";
-import readCard from "../images/goodreadsCard.JPG";
 import readCardHover from "../images/readsCard_hover.png";
 import readLogo from "../images/goodreadslogo.PNG";
 import portfolioCard from "../images/portfolioCard.JPG";
@@ -33,7 +25,6 @@ import graphic3 from "../images/graphic3.JPG";
 import graphic4 from "../images/graphic4.JPG";
 import graphic5 from "../images/graphic5.jpeg";
 import graphic6 from "../images/graphic6.jpg";
-import Image from "./Image";
 import Squares from "./Squares";
 import Line from "./Line";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -274,7 +265,7 @@ const Portfolio = () => {
                 branding. social media management.
                 <hr
                   style={{
-                    background: $lightblue,
+                    background: $darkgreen,
                     height: "1px",
                     border: "none",
                   }}
@@ -591,7 +582,7 @@ const Portfolio = () => {
                 branding. social media management.
                 <hr
                   style={{
-                    background: $lightblue,
+                    background: $darkgreen,
                     height: "1px",
                     border: "none",
                   }}
